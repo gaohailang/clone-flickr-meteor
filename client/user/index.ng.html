@@ -2,12 +2,18 @@
 
 <div ng-if="popup">
   Setting Profile
-  <form>
-    <input type="text" ng-model="vm.username">
-    <button ng-click="update()">Update</button>
-  </form>
+  <blaze-template
+    name="profileForm">
+  </blaze-template>
 </div>
 
-<div ng-if="hasProfile">
-  Profile Info
+<div ng-if="currentUser.profile">
+  Profile Info <br>
+  Nickname: <br>
+  {{currentUser.profile.nickname}}
+  Description: <br>
+  {{currentUser.profile.description}}
+  Avatar: <br>
+  <img ng-src="{{__getImageSrc(currentUser.profile.avatar)}}"
+    style="max-width: 100%;max-height: 400px">
 </div>

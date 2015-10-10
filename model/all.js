@@ -20,6 +20,71 @@ Photos = new Mongo.Collection('photos');
 Anotations = new Mongo.Collection('anotations');
 Comments = new Mongo.Collection('comments');
 // Friends = new Mongo.Collection('friends'); ?
+Images = new FS.Collection('images',{
+  stores: [new FS.Store.GridFS('original')]
+});
+
+// schema
+Schema = {};
+Schema.Profile = new SimpleSchema({
+  nickname: {
+    type: String,
+    label: 'Nick Name',
+    max: 30,
+    optional: false,
+    autoform: {
+      placeholder: 'Nick Name'
+    }
+  },
+  description: {
+    type: String,
+    optional: true,
+    max: 200,
+    autoform: {
+      type: 'textarea',
+      rows: 5
+    }
+  },
+  avatar: {
+    type: String,
+    autoform: {
+      afFieldInput: {
+        type: 'fileUpload',
+        collection: 'Images',
+        label: 'Upload Avatar'
+      }
+    }
+  }
+});
+Schema.User = new SimpleSchema({
+  emails: {
+    type: [Object],
+    // this must be optional if you also use other login services like facebook,
+    // but if you use only accounts-password, then it can be required
+    optional: true
+  },
+  "emails.$.address": {
+    type: String,
+    regEx: SimpleSchema.RegEx.Email
+  },
+  "emails.$.verified": {
+    type: Boolean
+  },
+  createdAt: {
+    type: Date
+  },
+  profile: {
+    type: Schema.Profile,
+    optional: true
+  },
+  services: {
+    type: Object,
+    optional: true,
+    blackbox: true
+  }
+});
+Meteor.users.attachSchema(Schema.User);
+
 
 // allow & deny
 

@@ -25,3 +25,9 @@ flickyApp.controller('userCtrl', ($scope, $stateParams, $meteor)=>{
     })*/
   };
 });
+
+Template.profileForm.helpers({
+  user: function(){
+    return Meteor.user();
+  }
+});

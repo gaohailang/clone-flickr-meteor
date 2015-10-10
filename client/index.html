@@ -7,3 +7,7 @@
   {{> loginButtons}}
   <div ui-view></div>
 </body>
+
+<template name="profileForm">
+  {{> quickForm collection="Meteor.users" doc=user id="user-profile-form" type="update" omitFields="emails,createdAt, services"}}
+</template>

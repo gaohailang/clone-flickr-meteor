@@ -22,3 +22,10 @@ angular
 angularui:angular-ui-router
 accounts-password
 accounts-ui
+aldeed:autoform
+cfs:standard-packages
+cfs:gridfs
+yogiben:autoform-file
+urigo:angular-blaze-template
+aldeed:simple-schema
+aldeed:collection2

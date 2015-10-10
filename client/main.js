@@ -22,11 +22,16 @@ flickyApp.config(function($urlRouterProvider, $stateProvider, $locationProvider)
 });
 
 flickyApp.controller('globalCtrl',
-  ($scope, $meteor, $state)=>{
+  ($scope, $meteor, $state, $filter)=>{
 
     /*$meteor.autorun($scope, ()=>{
 
     });*/
+    $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
+    $scope.__getImageSrc = (id)=>{
+      var url = $filter('filter')($scope.images, {_id: id})[0].url();
+      return url;
+    };
 
     $scope.$root.$watch('currentUser', (newU, oldU)=>{
       if(!newU) return;
