@@ -29,3 +29,6 @@ yogiben:autoform-file
 urigo:angular-blaze-template
 aldeed:simple-schema
 aldeed:collection2
+yogiben:autoform-modals
+twbs:bootstrap
+fourseven:scss

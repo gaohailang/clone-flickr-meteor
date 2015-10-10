@@ -6,8 +6,15 @@
   <h1>Clone the Flickr</h1>
   {{> loginButtons}}
   <div ui-view></div>
+  {{> autoformModals}}
 </body>
 
 <template name="profileForm">
   {{> quickForm collection="Meteor.users" doc=user id="user-profile-form" type="update" omitFields="emails,createdAt, services"}}
+</template>
+
+<template name="addAlbumBtn">
+  {{#afModal class="btn btn-primary" collection="Albums" operation="insert" id="album-add-form"}}
+    Add a album
+  {{/afModal}}
 </template>

@@ -1,0 +1,18 @@
+<h2>This is albumDetail partial</h2>
+
+<div class="pg-album-detail">
+  <p>
+    <a ui-sref="album-list">返回</a>
+  </p>
+  <p>
+    Album Name: {{album.name}}
+    <br>Album Author: {{__mapObjId('users', album.owner, 'i.profile.nickname')}}
+  </p>
+  <img class="x-image"
+    ng-src="{{__getImageSrc(album.cover)}}">
+  <ul class="x-image-list">
+    <li ng-repeat="i in album.photoList">
+      <img ng-src="{{__getImageSrc(album.cover)}}">
+    </li>
+  </ul>
+</div>

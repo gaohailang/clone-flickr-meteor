@@ -85,6 +85,63 @@ Schema.User = new SimpleSchema({
 });
 Meteor.users.attachSchema(Schema.User);
 
+Schema.Album = new SimpleSchema({
+  name: {
+    type: String,
+    label: 'Album Name',
+    max: 30,
+    optional: false,
+    autoform: {
+      placeholder: 'Album Name'
+    }
+  },
+  description: {
+    type: String,
+    optional: true,
+    max: 200,
+    autoform: {
+      type: 'textarea',
+      rows: 5
+    }
+  },
+  cover: {
+    type: String,
+    autoform: {
+      afFieldInput: {
+        type: 'fileUpload',
+        collection: 'Images',
+        label: 'Upload Cover'
+      }
+    }
+  },
+  owner: {
+    // optional: false,
+    type: String,
+    autoValue: function() {
+      var self = this;
+      if (self.isInsert) {
+        return self.userId;
+      } else {
+        self.unset();
+      }
+    },
+    autoform: {
+      type: 'hidden',
+      label: false
+    }
+  },
+  createdAt: {
+    type: Date,
+    autoValue: ()=>{
+      return new Date();
+    },
+    autoform: {
+      type: 'hidden',
+      label: false
+    }
+  }
+});
+Albums.attachSchema(Schema.Album);
 
 // allow & deny
 

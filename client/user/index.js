@@ -1,4 +1,4 @@
-flickyApp.controller('userCtrl', ($scope, $stateParams, $meteor)=>{
+flickrApp.controller('userCtrl', ($scope, $stateParams, $meteor)=>{
   // resolve user if uesrId, currentUser if profile
   // if has no profile, popup edit modal
 

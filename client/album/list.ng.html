@@ -1,0 +1,25 @@
+<h2>This is album list partial</h2>
+
+<div class="pg-album-list">
+  <p>
+    <blaze-template
+      name="addAlbumBtn">
+    </blaze-template>
+    <button ng-click="manageAlbum()">
+      Manage Albums
+    </button>
+  </p>
+  <div ng-repeat="i in albumList">
+    <a ui-sref="album-detail({id: i._id})">
+      <h3>{{i.name}}</h3>
+    </a>
+    <p>简介：{{i.description}}</p>
+    <img class="x-image"
+      ng-src="{{__getImageSrc(i.cover)}}">
+    <p>
+      信息：
+        图片张数： {{i.photos.length}},
+        创建时间： {{i.createdAt}}
+    </p>
+  </div>
+</div>

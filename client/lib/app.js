@@ -1,4 +1,4 @@
-flickyApp = angular.module('flickyApp', [
+flickrApp = angular.module('flickrApp', [
   'angular-meteor',
   'ui.router'
 ]);
@@ -6,7 +6,7 @@ flickyApp = angular.module('flickyApp', [
 // Config
 
 function onReady() {
-  angular.bootstrap(document, ['flickyApp']);
+  angular.bootstrap(document, ['flickrApp']);
 }
 
 if(Meteor.isCordova) {
