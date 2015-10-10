@@ -1,0 +1,13 @@
+<h2>This is user partial</h2>
+
+<div ng-if="popup">
+  Setting Profile
+  <form>
+    <input type="text" ng-model="vm.username">
+    <button ng-click="update()">Update</button>
+  </form>
+</div>
+
+<div ng-if="hasProfile">
+  Profile Info
+</div>
